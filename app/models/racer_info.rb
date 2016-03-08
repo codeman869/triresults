@@ -7,4 +7,6 @@ class RacerInfo
   field :res, type: Address, :as => :residence
   field :racer_id, :as => :_id
   field :_id, default:->{racer_id}
+  
+  embedded_in :parent, polymorphic: true
 end
