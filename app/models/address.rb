@@ -44,7 +44,7 @@ class Address
   def initialize(params={:city=>nil,:state=>nil,:loc=>nil})
       @city = params[:city]
       @state = params[:state]
-      @location = Point.new(params[:loc]) unless params[:loc]==nil
+      @location = Point.new(params[:loca]) unless params[:loc]==nil
   end
   
   def mongoize
