@@ -8647,3 +8647,7 @@ MONGODB | localhost:27017 | triresults_development.update | STARTED | {"update"=
 MONGODB | localhost:27017 | triresults_development.update | SUCCEEDED | 0.001743758s
 MONGODB | localhost:27017 | triresults_development.update | STARTED | {"update"=>"results", "updates"=>[{"q"=>{}, "u"=>{:$set=>{:created_at=>Mon, 07 Mar 2016, :updated_at=>Mon, 07 Mar 2016}}, "multi"=>true, "upsert"=>false}], "ordered"=>true}
 MONGODB | localhost:27017 | triresults_development.update | SUCCEEDED | 0.018923631s
+Overwriting existing field _id in class RacerInfo.
+Overwriting existing field _id in class RacerInfo.
+Overwriting existing field _id in class RacerInfo.
+Overwriting existing field _id in class RacerInfo.
