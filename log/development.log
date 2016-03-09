@@ -8660,3 +8660,20 @@ Overwriting existing field _id in class RacerInfo.
 Overwriting existing field _id in class RacerInfo.
 Overwriting existing field _id in class RacerInfo.
 Overwriting existing field _id in class RacerInfo.
+MONGODB | Adding localhost:27017 to the cluster.
+MONGODB | Connection refused - connect(2) for 127.0.0.1:27017
+MONGODB | Connection refused - connect(2) for 127.0.0.1:27017
+MONGODB | Connection refused - connect(2) for 127.0.0.1:27017
+MONGODB | Connection refused - connect(2) for 127.0.0.1:27017
+MONGODB | Connection refused - connect(2) for 127.0.0.1:27017
+MONGODB | Connection refused - connect(2) for 127.0.0.1:27017
+MONGODB | Connection refused - connect(2) for 127.0.0.1:27017
+MONGODB | Connection refused - connect(2) for 127.0.0.1:27017
+MONGODB | Connection refused - connect(2) for 127.0.0.1:27017
+MONGODB | Connection refused - connect(2) for 127.0.0.1:27017
+MONGODB | Connection refused - connect(2) for 127.0.0.1:27017
+MONGODB | Connection refused - connect(2) for 127.0.0.1:27017
+MONGODB | localhost:27017 | triresults_development.insert | STARTED | {"insert"=>"races", "documents"=>[{"_id"=>BSON::ObjectId('56e03363f883fe02ff20710a'), "n"=>"Oakland 10K", "date"=>2016-03-09 00:00:00 UTC, "location"=>{:city=>"Oakland", :state=>"CA", :loc=>{:type=>"Point", :coordinates=>[-122.27, 37.8]}}, "updated_at...
+MONGODB | localhost:27017 | triresults_development.insert | SUCCEEDED | 0.003567372s
+MONGODB | localhost:27017 | triresults_development.find | STARTED | {"find"=>"races", "filter"=>{"_id"=>BSON::ObjectId('56e03363f883fe02ff20710a')}}
+MONGODB | localhost:27017 | triresults_development.find | SUCCEEDED | 0.000990622s
