@@ -5,6 +5,7 @@ class Event
   field :d, type: Float, as: :distance
   field :u, type: String, as: :units
   
+  embedded_in :parent, :polymorphic => true, touch: true
 
   def meters
     
