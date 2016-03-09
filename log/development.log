@@ -17340,3 +17340,5 @@ MONGODB | localhost:27017 | triresults_development.update | STARTED | {"update"=
 MONGODB | localhost:27017 | triresults_development.update | SUCCEEDED | 0.003238752s
 MONGODB | localhost:27017 | triresults_development.find | STARTED | {"find"=>"races", "filter"=>{"_id"=>BSON::ObjectId('569a58b8e301d083c3000000')}}
 MONGODB | localhost:27017 | triresults_development.find | SUCCEEDED | 0.0036830179999999997s
+MONGODB | IOError
+MONGODB | Connection refused - connect(2) for 127.0.0.1:27017
