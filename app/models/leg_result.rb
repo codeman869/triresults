@@ -2,6 +2,8 @@ class LegResult
   include Mongoid::Document
   field :secs, type: Float
   
+  embedded_in :entrant
+  
   def initialize(params={:secs=>nil})
     super
     self[:secs] = params[:secs]
