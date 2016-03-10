@@ -17342,3 +17342,4 @@ MONGODB | localhost:27017 | triresults_development.find | STARTED | {"find"=>"ra
 MONGODB | localhost:27017 | triresults_development.find | SUCCEEDED | 0.0036830179999999997s
 MONGODB | IOError
 MONGODB | Connection refused - connect(2) for 127.0.0.1:27017
+MONGODB | Adding localhost:27017 to the cluster.
