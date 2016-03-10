@@ -4,6 +4,10 @@ class LegResult
   
   embedded_in :entrant
   
+  embeds_one :event, :as => :parent
+  
+  validates :event, :presence => true
+  
   def initialize(params={:secs=>nil})
     super
     self[:secs] = params[:secs]
