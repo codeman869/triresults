@@ -13,6 +13,8 @@ class Entrant
   
   embeds_one :race, class_name: "RaceRef", :inverse_of => :entrant
   
+  
+  
   def update_total(value)
     
     total_secs = 0
@@ -23,6 +25,11 @@ class Entrant
     end
     
     self.secs = total_secs
+  end
+  
+  
+  def the_race
+    self.race.race
   end
   
 end
