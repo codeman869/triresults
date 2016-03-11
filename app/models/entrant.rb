@@ -9,6 +9,19 @@ class Entrant
   
   store_in collection: 'results'
   
-  embeds_many :results, :class_name => "LegResult", :order => [:"event.o".asc]
-  #embedded_in :parent, :polymorphic => true, :class_name => "LegResult", :order => [:"event.o".asc]
+  embeds_many :results, :class_name => "LegResult", :order => [:"event.o".asc], after_add: :update_total, after_remove: :update_total
+  
+  
+  def update_total(value)
+    
+    total_secs = 0
+    
+    self.results.each do |result|
+      
+      total_secs = total_secs + result.secs
+    end
+    
+    self.secs = total_secs
+  end
+  
 end
