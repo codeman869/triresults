@@ -13,6 +13,7 @@ class Entrant
   
   embeds_one :race, class_name: "RaceRef", :inverse_of => :entrant
   
+  embeds_one :racer, as: :parent, :class_name => "RacerInfo"
   
   
   def update_total(value)
