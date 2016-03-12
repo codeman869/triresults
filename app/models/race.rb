@@ -5,6 +5,7 @@ class Race
   field :n, type: String, as: :name
   field :date, type: Date
   field :loc, type: Address, as: :location
+  field :next_bib, type:Integer, default: 0
   
   embeds_many :events, as: :parent, order: [:order.asc]
   
@@ -74,6 +75,9 @@ class Race
     
   end
   
-  
+  def next_bib
+    self.inc(:next_bib => 1)
+    self[:next_bib]
+  end
 
 end
