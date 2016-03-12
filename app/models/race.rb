@@ -77,6 +77,7 @@ class Race
   
   def next_bib
     self.inc(:next_bib => 1)
+    self.save!
     self[:next_bib]
   end
 
