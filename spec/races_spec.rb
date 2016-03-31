@@ -176,17 +176,17 @@ describe "Module #3 Summative: Implement Races Collection" do
     it "Events are embedded within Race document and sorted by order" do
       expect(Race.create(n:name, date:date, loc:address)).to_not be_nil
       expect(race = Race.find_by(n:name)).to_not be_nil
+      expect(race.events.build(o:4, n:"run", d:10, u:"kilometers")).to_not be_nil      
       expect(race.events.build(o:0, n:"swim", d:1, u:"miles")).to_not be_nil
-      expect(race.events.build(o:1, n:"t1")).to_not be_nil
       expect(race.events.build(o:2, n:"bike", d:25, u:"miles")).to_not be_nil
+      expect(race.events.build(o:1, n:"t1")).to_not be_nil
       expect(race.events.build(o:3, n:"t2")).to_not be_nil
-      expect(race.events.build(o:4, n:"run", d:10, u:"kilometers")).to_not be_nil
       expect(race.save).to eql true
 
-      expect(result = Race.find(race.id).attributes).to_not be_nil
-      expect(events = result[:events]).to be_a Array
+      expect(result = Race.find(race.id)).to_not be_nil
+      expect(events = result.events).to be_a Array
       expect(events.count).to eql 5
-      local_o = -100
+      local_o = -1
       events.each { |e| 
         expect(e["o"]).to be >= local_o
         local_o = e["o"]

@@ -34,10 +34,14 @@ feature "Module #3 Web Racer/Race Registration", :type => :routing do
     
     scenario "racer#create_entry route will create a registration in the db" do 
       # get race and racer for post
+      
       test_racer = Racer.first
       test_race = Race.upcoming_available_to(test_racer).first
       orig_entrant_ids = test_race.entrants.to_a.map{|e| e.id}
+      #byebug
       page.driver.post("racers/#{test_racer.id}/entries?race_id=#{test_race.id}") 
+      #byebug
+      #sleep 5
       updated_entrants = Race.find(test_race.id).entrants.to_a
       # confirm there is one more entrant that before
       expect(updated_entrants.count).to eql orig_entrant_ids.count + 1

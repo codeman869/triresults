@@ -111,8 +111,14 @@ class Race
 
   def create_entrant racer
     entrant = Entrant.new
-    entrant.race = self.attributes.symbolize_keys.slice(:_id, :n, :date)
-    entrant.racer = racer.info.attributes
+    
+    #entrant.race = self.attributes.symbolize_keys.slice(:_id, :n, :date)
+    #entrant.racer = racer.info.attributes
+    
+    
+    entrant.build_race(self.attributes.symbolize_keys.slice(:_id,:n,:date))
+    entrant.build_racer(racer.info.attributes)
+    
     entrant.group = get_group(racer)
     
     self.events.each do |event|

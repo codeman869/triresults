@@ -63,6 +63,31 @@ class RacersController < ApplicationController
     end
   end
 
+  def create_entry
+    
+    @racer = Racer.find(params[:racer_id])
+    @race=Race.find(params[:race_id])
+    logger.debug("Racer: #{@racer.attributes.inspect}")
+    logger.debug("Race: #{@race.attributes.inspect}")
+    logger.debug("Entrants before: #{Race.find(@race.id).entrants.to_a}")
+    #byebug
+    @entrant = @race.create_entrant @racer
+    #byebug
+   
+    logger.debug("Entrant: #{@entrant.attributes.inspect}")
+    logger.debug("Entrants after: #{Race.find(@race.id).entrants.to_a}")
+    
+    respond_to do |format|
+      if @entrant.valid?
+        format.html {redirect_to @racer, notice: 'Race entry was successfully created' }
+        format.json {render :show, status: :created, location: @racer}
+      else
+        format.html {redirect_to @racer, notice: "Invalid registration #{@entrant.errors.messages}" }
+        format.json {render json: @entrant.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_racer
