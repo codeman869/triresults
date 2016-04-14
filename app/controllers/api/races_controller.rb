@@ -6,10 +6,17 @@ module Api
     
    class RacesController < ApplicationController
        def index
+        
+        renderContent =   "/#{params[:controller]}" 
+        
+        if params[:offset] && params[:limit]
+           renderContent << ", offset=[#{params[:offset]}], limit=[#{params[:limit]}]" 
+        end
+           
         if Api::plainText?(request)
-           render plain: "/#{params[:controller]}"
+           render plain: renderContent
         else
-           render html: "/#{params[:controller]}"
+           render html: renderContent
         end
        end
        
