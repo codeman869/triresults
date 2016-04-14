@@ -30,10 +30,16 @@ module Api
         
         
         def create
+            renderContent = :nothing
+            
+            if params[:race][:name]
+               renderContent = params[:race][:name] 
+            end
+            
             if Api::plainText?(request)
-               render plain: :nothing, status: :ok 
+               render plain: renderContent, status: :ok 
             else
-                render html: :nothing, status: :ok
+                render html: renderContent, status: :ok
             end
         end
    end
