@@ -20,7 +20,15 @@ module Api
                 render html: "/#{params[:controller]}/#{params[:id]}"
             end
        end
-   
+        
+        
+        def create
+            if Api::plainText?(request)
+               render plain: :nothing, status: :ok 
+            else
+                render html: :nothing, status: :ok
+            end
+        end
    end
     
 end
