@@ -35,12 +35,27 @@ module Api
             if params[:race][:name]
                renderContent = params[:race][:name] 
             end
-            
+           #byebug
             if Api::plainText?(request)
-               render plain: renderContent, status: :ok 
+               render plain: renderContent, status: :ok
+               
             else
-                render html: renderContent, status: :ok
+                race = Race.create(race_params)
+            
+                render plain: renderContent, status: :created if race.persisted?
+                
             end
+            
+            
+            
+        end
+        
+        
+      private
+      
+      
+        def race_params
+           params.require(:race).permit(:name,:date) 
         end
    end
     
