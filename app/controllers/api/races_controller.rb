@@ -61,6 +61,15 @@ module Api
             
         end
         
+        def update
+            #byebug
+            race = Race.find(params[:id])
+            
+            race.update(race_params)
+            
+            
+            render json: race, status: :ok
+        end
         
       private
       
