@@ -30,16 +30,19 @@ module Api
         
         
         def create
+            
             renderContent = :nothing
             
-            if params[:race][:name]
-               renderContent = params[:race][:name] 
+            if params[:race] && params[:race][:name]
+                renderContent = params[:race][:name] 
             end
+            
            #byebug
             if Api::plainText?(request)
                render plain: renderContent, status: :ok
                
             else
+
                 race = Race.create(race_params)
             
                 render plain: renderContent, status: :created if race.persisted?
