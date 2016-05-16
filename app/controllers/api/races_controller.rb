@@ -26,11 +26,12 @@ module Api
                 render :nothing
             end
             
-           race = Race.find(params[:id])
+          
            
            if Api::plainText?(request)
                 render plain: "/#{params[:controller]}/#{params[:id]}"
             else
+                race = Race.find(params[:id])
                 render json: race, status: :ok
             end
        end
