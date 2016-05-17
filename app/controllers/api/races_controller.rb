@@ -21,7 +21,7 @@ module Api
        end
        
        def show
-           
+           #byebug
             if params[:id].nil?
                 render :nothing
             end
@@ -31,8 +31,10 @@ module Api
            if Api::plainText?(request)
                 render plain: "/#{params[:controller]}/#{params[:id]}"
             else
-                race = Race.find(params[:id])
-                render json: race, status: :ok
+                
+                @race = Race.find(params[:id])
+                #render json: race, status: :ok
+                #render @race
             end
        end
         
@@ -80,7 +82,18 @@ module Api
         
         rescue_from Mongoid::Errors::DocumentNotFound do |exception|
             
-            render plain: "Whoops, cannot find race[#{params[:id]}]", status: :not_found
+            if Api::plainText?(request)
+            
+                render plain: "Whoops, cannot find race[#{params[:id]}]", status: :not_found
+                
+            else
+               
+               render :status => :not_found, :template => "api/races/error_msg", :locals => {
+                   
+                   :msg => "Whoops, cannot find race[#{params[:id]}]"
+               }
+                
+            end
             
         end
         
