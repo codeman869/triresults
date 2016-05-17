@@ -97,6 +97,12 @@ module Api
             
         end
         
+        rescue_from ActionView::MissingTemplate do |exception|
+           
+           render plain: "woops: we do not support that content-type[#{request.accept}]", :status => :unsupported_media_type
+            
+        end
+        
         
       private
       
