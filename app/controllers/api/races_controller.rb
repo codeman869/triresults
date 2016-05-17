@@ -63,12 +63,19 @@ module Api
         
         def update
             #byebug
+            Rails.logger.debug("method=#{request.method}")
             race = Race.find(params[:id])
             
             race.update(race_params)
             
             
             render json: race, status: :ok
+        end
+        
+        def destroy
+            #byebug
+            Race.find(params[:id]).delete
+            render :nothing => true, :status => :no_content
         end
         
       private
