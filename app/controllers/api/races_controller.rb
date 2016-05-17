@@ -78,6 +78,13 @@ module Api
             render :nothing => true, :status => :no_content
         end
         
+        rescue_from Mongoid::Errors::DocumentNotFound do |exception|
+            
+            render plain: "Whoops, cannot find race[#{params[:id]}]", status: :not_found
+            
+        end
+        
+        
       private
       
       
