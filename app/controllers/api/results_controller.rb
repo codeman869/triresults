@@ -17,7 +17,10 @@ module Api
             if Api::plainText?(request)
                 render plain: "/api/races/#{params[:race_id]}/results/#{params[:id]}" 
             else
-                render html: "/api/races/#{params[:race_id]}/results/#{params[:id]}"
+                @result = Race.find(params[:race_id]).entrants.where(:id=>params[:id]).first
+                
+                render :partial => "result", :object => @result
+                #render html: "/api/races/#{params[:race_id]}/results/#{params[:id]}"
             end
         end
     end
