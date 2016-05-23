@@ -65,6 +65,8 @@ feature "Module #4 Headers and Caching", :type => :routing do
       begin
         race = Race.all.sample
       end while race.entrants.count == 0
+      #byebug
+      #Capybara.app_host = "https://triresults-api-codeman869-1.c9users.io/"
       page.driver.header('Accept', 'application/json')  
       page.driver.get("/api/races/#{race.id}/results")
       expect(page.status_code).to eql(200)

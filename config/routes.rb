@@ -1,3 +1,5 @@
+Rails.application.routes.default_url_options[:host] = 'https://triresults-api-codeman869-1.c9users.io'
+
 Rails.application.routes.draw do
   
   resources :racers do

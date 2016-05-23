@@ -10,6 +10,7 @@ module Api
             if Api::plainText?(request)
                 render plain: "/api/races/#{params[:race_id]}/results"
             else
+                #byebug
                 @race = Race.find(params[:race_id])
                 @entrants = @race.entrants
                 stale?(:last_modified => @entrants.max(:updated_at))
