@@ -80,6 +80,7 @@ feature "Module #4 Resource Implementation (JSON)", :type => :routing do
         total_secs = total_secs + time_array[n]
         expect(:patch => "/api/races/#{race.id}/results/#{entrant.id}").to be_routable  
         page.driver.header('Content-Type', 'application/json')
+        #page.driver.header('Accept', 'application/json')
         page.driver.submit(:patch, "/api/races/#{race.id}/results/#{entrant.id}", j_string)
         expect(page.status_code).to eql 200
         expect(c_values = Entrant.where(id:entrant.id).pluck(:created_at, :updated_at, :secs).flatten).to_not be_nil
