@@ -10,7 +10,8 @@ module Api
             if Api::plainText?(request)
                 render plain: "/api/races/#{params[:race_id]}/results"
             else
-                render html: "/api/races/#{params[:race_id]}/results"
+                @race = Race.find(params[:race_id])
+                @entrants = @race.entrants
             end
         end
         
